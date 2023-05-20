@@ -16,10 +16,14 @@ openai.api_base = "https://api.openai.com/v1"
 model_engine = "davinci"
 
 
+# Flask 定义路由
 @app.route('/ask/chatbot', methods=['POST'])
 def chatbot():
+    # 获取请求的 JSON 数据，此处我们假设此请求 JSON 数据包括 "message" 键
     request_json = request.get_json(silent=True)
     message = request_json['message']
+
+    # 调用 Chat-GPT 生成答案
     response = openai.Completion.create(
         engine=model_engine,
         prompt=message,
@@ -28,6 +32,8 @@ def chatbot():
         stop=None,
         temperature=0.5,
     )
+
+    # 返回生成的回答
     return jsonify({"response": response.choices[0].text})
 
 
