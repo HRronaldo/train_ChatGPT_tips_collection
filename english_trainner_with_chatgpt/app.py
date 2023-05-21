@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'dynamic_key'
 
 # 使用 Chat-GPT API 密钥连接到 OpenAI
-OPEN_AI_API_KEY = "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"
+OPEN_AI_API_KEY = "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"
 openai.api_key = OPEN_AI_API_KEY
 openai.api_base = "https://api.openai.com/v1"
 model_engine = "davinci"
